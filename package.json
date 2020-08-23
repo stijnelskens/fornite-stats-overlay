@@ -1,0 +1,16 @@
+{
+  "name": "fortnite-overlay",
+  "version": "1.0.0",
+  "description": "An overlay for obs",
+  "main": "index.js",
+  "dependencies": {
+    "call-of-duty-api": "^1.2.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "Stijn Elskens",
+  "license": "MIT"
+}
