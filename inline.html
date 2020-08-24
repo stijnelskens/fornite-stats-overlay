@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortnite Overlay by Streamergoods.com</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        html {
+            width: 600px;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="max-w-xl flex flex-wrap bg-blue-500 py-4 px-6" style="clip-path: polygon(2% 5%, 97% 2%, 98% 94%, 3% 100%);">
+        <div id="error-message" class="w-full bg-red-500 text-white p-4 mb-2" style="display: none;">Something went wrong, try to refresh</div>
+        <div class="w-1/3 px-1">
+            <div class="bg-yellow-400 py-2 px-4 text-center shadow-xl" style="clip-path: polygon(5% 0, 100% 0%, 96% 100%, 0% 100%);">
+                <strong>Wins</strong>
+                <div><span class="wins" id="wins"></span></div>
+            </div>
+        </div>
+        <div class="w-1/3 px-1">
+            <div class="bg-yellow-400 py-2 px-4 text-center" style="clip-path: polygon(5% 0, 100% 0%, 96% 100%, 0% 100%);">
+                <strong>Kills</strong>
+                <div><span class="kills" id="kills"></span></div>
+            </div>
+        </div>
+        <div class="w-1/3 px-1">
+            <div class="bg-yellow-400 py-2 px-4 text-center" style="clip-path: polygon(5% 0, 100% 0%, 96% 100%, 0% 100%);">
+                <strong>KD</strong>
+                <div><span class="kd" id="kd"></span></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        getStats();
+
+        setInterval(function() {
+
+            getStats();
+
+        }, 300000);
+
+        function getStats(inputValue) {
+            axios.get('https://fortnite-api.com/v1/stats/br/v2/6cfc0b1fc8c0485185fe8a95ed3df94b')
+            .then(function (response) {
+
+                const wins = document.getElementById('wins');
+                const kills = document.getElementById('kills');
+                const kd = document.getElementById('kd');
+
+                wins.innerHTML = response.data.data.stats.all.overall.wins;
+                kills.innerHTML = response.data.data.stats.all.overall.kills;
+                kd.innerHTML = Math.round(response.data.data.stats.all.overall.kd * 100) / 100;
+
+                document.getElementById('error-message').style.display = 'none';
+            })
+            .catch(function (error) {
+                document.getElementById('error-message').style.display = 'block';
+            })
+            .then(function () {
+                // always executed
+                console.log('Done');
+            });
+        }
+        
+    </script>
+</body>
+</html>
