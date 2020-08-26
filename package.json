@@ -1,11 +1,9 @@
 {
-  "name": "fortnite-overlay",
+  "name": "fortnite-stats-overlay",
   "version": "1.0.0",
   "description": "An overlay for obs",
   "main": "index.js",
-  "dependencies": {
-    "call-of-duty-api": "^1.2.15"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "scripts": {
     "dev": "parcel index.html",
