@@ -54,9 +54,9 @@
             axios.get('https://fortnite-api.com/v1/stats/br/v2/6cfc0b1fc8c0485185fe8a95ed3df94b')
             .then(function (response) {
 
-                const wins = document.getElementById('wins');
-                const kills = document.getElementById('kills');
-                const kd = document.getElementById('kd');
+                var wins = document.getElementById('wins');
+                var kills = document.getElementById('kills');
+                var kd = document.getElementById('kd');
 
                 wins.innerHTML = response.data.data.stats.all.overall.wins;
                 kills.innerHTML = response.data.data.stats.all.overall.kills;
@@ -98,8 +98,7 @@
                     };
                 }, 6500);
             });
-        }
-        
+        } 
     </script>
 </body>
 </html>
