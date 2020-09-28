@@ -1,4 +1,3 @@
-import { saveAs } from 'file-saver';
 const FileSaver = require('file-saver');
 const axios = require('axios').default;
 const submitButton = document.getElementById('js-submit');
